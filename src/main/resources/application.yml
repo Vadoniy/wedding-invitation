@@ -1,0 +1,42 @@
+text:
+  invitation:
+    new: "Ура! Вы сообщили нам, что вы придёте и отправили нам следующие данные: %s \nБольшое спасибо, мы вам очень рады!"
+    update: "Ваши данные были обновлены: %s \nБольшое спасибо, мы вам очень рады!"
+  exception: "Извините, я где-то накосячил и что-то пошло не так, попробуйте ещё раз пожалуйста.
+  Если проблема повторится, позвоните кому-нибудь из организаторов и пожалуйтесь на криворуких разработчиков, которым только бы кофе пить."
+
+mail:
+  from: "shillenknight_89@mail.ru"
+  to-vadony: "shturman_1989@mail.ru"
+  to-natashonka: "kxido@yandex.ru"
+  subject: "Wedding invitation"
+
+spring:
+  jpa:
+    show-sql: false
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    jdbc.lob.non_contextual_creation: true
+  mail:
+    host: smtp.mail.ru
+    username: shillenknight_89
+    password: abmk825--
+    port: 465
+    protocol: smtps
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+
+#logging:
+#  file:
+#    max-history: 2
+#    max-size: 10MB
+#    name: logs\invitation-logging-file.log
+#  level:
+#    root: error
