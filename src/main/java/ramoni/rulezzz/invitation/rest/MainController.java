@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ramoni.rulezzz.invitation.dto.GuestInfoDto;
 import ramoni.rulezzz.invitation.service.GuestInfoService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 public class MainController {
@@ -15,7 +17,7 @@ public class MainController {
     private final GuestInfoService guestInfoService;
 
     @PostMapping("/send")
-    public String inform(@RequestBody GuestInfoDto guestInfo) {
+    public String inform(@Valid @RequestBody GuestInfoDto guestInfo) {
         return guestInfoService.sendInfo(guestInfo);
     }
 

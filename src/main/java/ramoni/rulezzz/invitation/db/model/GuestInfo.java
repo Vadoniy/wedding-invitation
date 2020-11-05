@@ -1,12 +1,12 @@
 package ramoni.rulezzz.invitation.db.model;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import ramoni.rulezzz.invitation.dto.GuestInfoDto;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -35,6 +35,9 @@ public class GuestInfo {
     @NotNull
     private boolean isAlcoholic = true;
 
+    @NotNull
+    private boolean isOvernight = true;
+
     private String comment;
 
     @CreatedDate
@@ -46,6 +49,7 @@ public class GuestInfo {
         guestInfo.setContactPhone(guestInfoDto.getContactPhone());
         guestInfo.setWithChildren(guestInfoDto.isWithChildren());
         guestInfo.setPlusOne(guestInfoDto.isPlusOne());
+        guestInfo.setOvernight(guestInfoDto.isOvernight());
         guestInfo.setComment(guestInfoDto.getComment());
         guestInfo.setAlcoholic(guestInfoDto.isAlcoholic());
         return guestInfo;
@@ -54,6 +58,7 @@ public class GuestInfo {
     public static GuestInfo updateEntity(GuestInfoDto guestInfoDto, GuestInfo guestInfo) {
         guestInfo.setName(guestInfoDto.getName());
         guestInfo.setPlusOne(guestInfoDto.isPlusOne());
+        guestInfo.setOvernight(guestInfoDto.isOvernight());
         guestInfo.setWithChildren(guestInfoDto.isWithChildren());
         guestInfo.setComment(guestInfoDto.getComment());
         guestInfo.setAlcoholic(guestInfoDto.isAlcoholic());
