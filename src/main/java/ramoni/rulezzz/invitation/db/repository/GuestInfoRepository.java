@@ -5,7 +5,7 @@ import ramoni.rulezzz.invitation.db.model.GuestInfo;
 
 import java.util.Optional;
 
-public interface GuestInfoRepository extends JpaRepository<GuestInfo, String> {
+public interface GuestInfoRepository extends JpaRepository<GuestInfo, Long> {
 
     Optional<GuestInfo> findByContactPhone(String phoneNumber);
 }

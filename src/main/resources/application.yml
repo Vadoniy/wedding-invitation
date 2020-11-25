@@ -23,8 +23,8 @@ spring:
     jdbc.lob.non_contextual_creation: true
   mail:
     host: smtp.mail.ru
-    username: shillenknight_89
-    password: abmk825--
+    username: ${MAIL_FROM}
+    password: ${MAIL_PASSWORD}
     port: 465
     protocol: smtps
     properties:

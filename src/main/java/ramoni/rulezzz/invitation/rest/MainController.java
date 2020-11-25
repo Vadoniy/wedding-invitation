@@ -25,4 +25,9 @@ public class MainController {
     public String getList() {
         return guestInfoService.getList();
     }
+
+    @GetMapping("/goodByeGuest")
+    public void goodByeGuest(Long id) {
+        guestInfoService.goodByeGuest(id);
+    }
 }
