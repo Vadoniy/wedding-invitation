@@ -10,6 +10,9 @@ import ramoni.rulezzz.invitation.service.GuestInfoService;
 
 import javax.validation.Valid;
 
+/**
+ * @author Вадим Курбатов (kurbatov_1989@inbox.ru)
+ */
 @RestController
 @RequiredArgsConstructor
 public class MainController {

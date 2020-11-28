@@ -17,6 +17,9 @@ import javax.mail.MessagingException;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * @author Вадим Курбатов (kurbatov_1989@inbox.ru)
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -44,6 +47,10 @@ public class GuestInfoService {
     public String getList() {
         final var objectMapper = new ObjectMapper();
         final var guests = guestInfoRepository.findAll();
+        if (guests.isEmpty()) {
+            sendMail("Список гостей пока что пуст...", List.of(mailConfiguration.getToVadony()));
+            return "Список гостей пока что пуст...";
+        }
         try {
             final var guestListText = new StringBuilder();
             guests.forEach(guestInfo -> {

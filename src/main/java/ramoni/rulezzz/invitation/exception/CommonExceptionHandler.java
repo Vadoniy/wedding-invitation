@@ -1,6 +1,7 @@
 package ramoni.rulezzz.invitation.exception;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -9,13 +10,16 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.util.Map;
+
+/**
+ * @author Вадим Курбатов (kurbatov_1989@inbox.ru)
+ */
 @ControllerAdvice
 @Slf4j
 public class CommonExceptionHandler {
 
     private static final String INVALID_VALUE = "invalid";
-
-    private static final String INVALID_FIELD_PATTERN = "{\"%s\":\"%s\"}";
 
     @Value("${text.exception}")
     private String entschuldigung;
@@ -25,21 +29,17 @@ public class CommonExceptionHandler {
         String responseMessage = null;
 
         if (exception instanceof MethodArgumentNotValidException) {
-            final var stringBuilder = new StringBuilder("{\"badField\":[");
+            final var om = new ObjectMapper();
             final var mnve = ((MethodArgumentNotValidException) exception).getBindingResult().getFieldErrors();
-            mnve.forEach(fieldError -> addErrorFieldString(stringBuilder, fieldError.getField()));
-            stringBuilder.append("]");
+            final var errorList = new ErrorList();
+            mnve.forEach(fieldError ->
+                    errorList.getBadFields().add(Map.of(fieldError.getField(), INVALID_VALUE))
+            );
+
             log.error(exception.getLocalizedMessage());
-            responseMessage = stringBuilder.toString();
+            responseMessage = om.writeValueAsString(errorList);
         }
         return new ResponseEntity<>(responseMessage != null ? responseMessage : entschuldigung, HttpStatus.BAD_REQUEST);
     }
 
-    private StringBuilder addErrorFieldString(StringBuilder stringBuilder, String fieldName) {
-        if (stringBuilder.toString().endsWith("}")) {
-            stringBuilder.append(",");
-        }
-        stringBuilder.append(String.format(INVALID_FIELD_PATTERN, fieldName, INVALID_VALUE));
-        return stringBuilder;
-    }
 }

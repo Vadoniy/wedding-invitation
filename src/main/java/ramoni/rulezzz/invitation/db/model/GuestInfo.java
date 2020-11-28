@@ -9,6 +9,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+/**
+ * @author Вадим Курбатов (kurbatov_1989@inbox.ru)
+ */
 @Data
 @Entity
 @Table(name = "GUESTS")

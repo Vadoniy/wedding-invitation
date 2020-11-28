@@ -9,6 +9,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * @author Вадим Курбатов (kurbatov_1989@inbox.ru)
+ */
 @Getter
 @Setter
 public class GuestInfoDto {
