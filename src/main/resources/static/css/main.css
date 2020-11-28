@@ -1,0 +1,45 @@
+body {
+    background-image: url("/fon.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+.jumbotron {
+    background-color: rgba(98,19,44,0.7);
+    max-width: 57em;
+    margin: 0 auto;
+    color: rgb(255,174,201);
+}
+.mar-bot-1 {
+    margin-bottom: 1em;
+}
+form {
+    margin-bottom: 1em;
+}
+.btn-primary {
+    background-color: rgb(112,67,106) ;
+    border-color: rgb(67,19,38);
+    color: rgb(255,174,201);
+}
+.btn-primary:hover {
+    background-color: rgb(29,29,58);
+    border-color: rgb(67,19,38);
+}
+.btn-primary:active{
+    background-color: rgb(29,29,58);
+    border-color: rgb(67,19,38);
+}
+h1 {
+    color: rgb(255,174,201);
+}
+a {
+    color: white;
+}
+a:hover {
+    color: rgb(255,174,201);
+}
+.card {
+    background-color: rgba(29,29,58,0.7) ;
+    margin-bottom: 1em;
+}
