@@ -7,7 +7,6 @@
     <link href="css/main.css" rel="stylesheet">
     <script src="webjars/jquery/3.5.1/jquery.js"></script>
     <script src="webjars/bootstrap/4.5.3/js/bootstrap.js"></script>
-    <script src="js/main.js"></script>
     <title>Wedding</title>
 </head>
 <body>
@@ -67,7 +66,7 @@
     </div>
     <div>
         <h2 class="text-center">А теперь утечка персональных данных:</h2>
-        <form>
+        <form class="needs-validation">
             <fieldset>
                 <div class="form-group">
                     <label for="nameInput">Имя гостя</label>
@@ -75,7 +74,11 @@
                            type="text"
                            class="form-control"
                            name="name"
-                           placeholder="Иванов Иван Александрович"/>
+                           placeholder="Иванов Иван Александрович"
+                           required />
+                    <div id="nameInputInvalid" class="invalid-feedback">
+                        Это поле не должно быть пустым
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="phoneInput" class="phoneInput">
@@ -86,7 +89,11 @@
                            type="text"
                            class="form-control form-control-lg"
                            name="contactPhone"
-                           placeholder="+78005553535" />
+                           placeholder="+78005553535"
+                           required />
+                    <div id="phoneInputInvalid" class="invalid-feedback">
+                        Это поле не должно быть пустым
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="plusOneSelect" class="plusOneSelect">
@@ -181,5 +188,62 @@
         </a>
     </div>
 </div>
+<script>
+    function send() {
+        let data = {
+            "name": $("#nameInput").val(),
+            "contactPhone": $("#phoneInput").val(),
+            "plusOne": $("#plusOneSelect").val(),
+            "isAlcoholic": $("#isAlcoholicSelect").val(),
+            "isOvernight": $("#isOvernightSelect").val(),
+            "withChildren": $("#withChildrenSelect").val(),
+            "comment": $("#commentTextarea").val()
+        };
+
+        if ((data.name === null || data.name === "")
+            && (data.contactPhone === null || data.contactPhone === "")) {
+            $("#nameInput").css("border-color", "#dc3545");
+            $("#nameInputInvalid").show();
+
+            $("#phoneInput").css("border-color", "#dc3545");
+            $("#phoneInputInvalid").show();
+        } else if (data.name === null || data.name === "") {
+            $("#nameInput").css("border-color", "#dc3545");
+            $("#nameInputInvalid").show();
+        } else if (data.contactPhone === null || data.contactPhone === "") {
+            $("#phoneInput").css("border-color", "#dc3545");
+            $("#phoneInputInvalid").show();
+        } else {
+            console.log(data);
+            $.ajax({
+                url: "send",
+                type:"POST",
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function(data) {
+                    if (data) {
+                        $("#nameInput").val("");
+                        $("#phoneInput").val("");
+                        $("#plusOneSelect").val("false");
+                        $("#isAlcoholicSelect").val("true");
+                        $("#isOvernightSelect").val("false");
+                        $("#withChildrenSelect").val("false");
+                        $("#commentTextarea").val("");
+                    }
+                }
+            });
+        }
+    }
+
+    $("#nameInput").focus(function () {
+        $("#nameInput").css("border-color", "#ced4da");
+        $("#nameInputInvalid").hide();
+    });
+
+    $("#phoneInput").focus(function () {
+        $("#phoneInput").css("border-color", "#ced4da");
+        $("#phoneInputInvalid").hide();
+    });
+</script>
 </body>
 </html>
