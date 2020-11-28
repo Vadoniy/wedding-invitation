@@ -13,8 +13,7 @@ import javax.validation.constraints.Size;
 @Setter
 public class GuestInfoDto {
 
-    @NotBlank
-    @ApiModelProperty(value = "Идентификатор гостя в БД", required = true)
+    @ApiModelProperty(value = "Идентификатор гостя в БД, заполняется только при выгрузке списка гостей", hidden = true)
     private String id;
 
     @NotBlank
