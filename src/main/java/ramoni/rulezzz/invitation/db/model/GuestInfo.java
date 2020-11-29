@@ -54,7 +54,7 @@ public class GuestInfo {
         guestInfo.setPlusOne(guestInfoDto.getPlusOne());
         guestInfo.setOvernight(guestInfoDto.getIsOvernight());
         guestInfo.setComment(guestInfoDto.getComment());
-        guestInfo.setAlcoholic(guestInfoDto.isAlcoholic());
+        guestInfo.setAlcoholic(guestInfoDto.getIsAlcoholic());
         return guestInfo;
     }
 
