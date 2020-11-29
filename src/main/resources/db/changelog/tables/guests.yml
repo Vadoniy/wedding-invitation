@@ -1,0 +1,59 @@
+databaseChangeLog:
+  - changeSet:
+      id: 291120201331
+      author: v.kurbatov
+      runOnChange: true
+      comment: init guests schema
+      changes:
+        - createSequence:
+            sequenceName: GUEST_INFO_SEQ
+        - createTable:
+            tableName: GUESTS
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  defaultValueComputed: nextval('GUEST_INFO_SEQ')
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: guests_pkey
+              - column:
+                  name: name
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: contact_phone
+                  type: varchar(12)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: plus_one
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: with_children
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_alcoholic
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_overnight
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: comment
+                  type: varchar(1000)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created
+                  type: timestamp
+                  constraints:
+                    nullable: true

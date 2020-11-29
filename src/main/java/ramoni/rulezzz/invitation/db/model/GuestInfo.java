@@ -1,7 +1,7 @@
 package ramoni.rulezzz.invitation.db.model;
 
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 import ramoni.rulezzz.invitation.dto.GuestInfoDto;
 
 import javax.persistence.*;
@@ -43,7 +43,7 @@ public class GuestInfo {
 
     private String comment;
 
-    @CreatedDate
+    @CreationTimestamp
     private LocalDateTime created;
 
     public static GuestInfo convertToEntity(GuestInfoDto guestInfoDto) {
