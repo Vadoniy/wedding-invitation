@@ -16,7 +16,7 @@ spring:
     password: ${dB_PASSWORD}
     driverClassName: org.postgresql.Driver
     properties.hibernate.jdbc.lob.non_contextual_creation: true
-    url: jdbc:postgresql://192.168.99.100:45432/wedding
+    url: jdbc:postgresql://localhost:5432/wedding
   jpa:
     show-sql: false
     hibernate.ddl-auto: validate
