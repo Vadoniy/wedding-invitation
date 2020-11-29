@@ -50,9 +50,9 @@ public class GuestInfo {
         final var guestInfo = new GuestInfo();
         guestInfo.setName(guestInfoDto.getName());
         guestInfo.setContactPhone(guestInfoDto.getContactPhone());
-        guestInfo.setWithChildren(guestInfoDto.isWithChildren());
-        guestInfo.setPlusOne(guestInfoDto.isPlusOne());
-        guestInfo.setOvernight(guestInfoDto.isOvernight());
+        guestInfo.setWithChildren(guestInfoDto.getWithChildren());
+        guestInfo.setPlusOne(guestInfoDto.getPlusOne());
+        guestInfo.setOvernight(guestInfoDto.getIsOvernight());
         guestInfo.setComment(guestInfoDto.getComment());
         guestInfo.setAlcoholic(guestInfoDto.isAlcoholic());
         return guestInfo;
@@ -60,11 +60,11 @@ public class GuestInfo {
 
     public static GuestInfo updateEntity(GuestInfoDto guestInfoDto, GuestInfo guestInfo) {
         guestInfo.setName(guestInfoDto.getName());
-        guestInfo.setPlusOne(guestInfoDto.isPlusOne());
-        guestInfo.setOvernight(guestInfoDto.isOvernight());
-        guestInfo.setWithChildren(guestInfoDto.isWithChildren());
+        guestInfo.setPlusOne(guestInfoDto.getPlusOne());
+        guestInfo.setOvernight(guestInfoDto.getIsOvernight());
+        guestInfo.setWithChildren(guestInfoDto.getWithChildren());
         guestInfo.setComment(guestInfoDto.getComment());
-        guestInfo.setAlcoholic(guestInfoDto.isAlcoholic());
+        guestInfo.setAlcoholic(guestInfoDto.getIsAlcoholic());
         return guestInfo;
     }
 }

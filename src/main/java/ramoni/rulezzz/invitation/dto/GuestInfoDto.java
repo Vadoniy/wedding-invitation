@@ -30,17 +30,17 @@ public class GuestInfoDto {
 
     @NotNull
     @ApiModelProperty(value = "Вы приедете с другом/подругой/мужем/женой/любовницей?")
-    private boolean plusOne = false;
+    private Boolean plusOne;
 
     @NotNull
-    private boolean isAlcoholic = true;
+    private Boolean isAlcoholic;
 
     @NotNull
-    private boolean isOvernight = true;
+    private Boolean isOvernight;
 
     @NotNull
     @ApiModelProperty(value = "Вы приедете с детьми или без?")
-    private boolean withChildren = false;
+    private Boolean withChildren;
 
     @ApiModelProperty(value = "Если есть, что для нас сообщить, это поле для вас.")
     private String comment;
@@ -70,8 +70,8 @@ public class GuestInfoDto {
         dto.setName(guestInfo.getName());
         dto.setContactPhone(guestInfo.getContactPhone());
         dto.setPlusOne(guestInfo.isPlusOne());
-        dto.setAlcoholic(guestInfo.isAlcoholic());
-        dto.setOvernight(guestInfo.isOvernight());
+        dto.setIsAlcoholic(guestInfo.isAlcoholic());
+        dto.setIsOvernight(guestInfo.isOvernight());
         dto.setWithChildren(guestInfo.isWithChildren());
         dto.setComment(guestInfo.getComment());
         return dto;
