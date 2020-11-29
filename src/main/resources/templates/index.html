@@ -94,6 +94,9 @@
                     <div id="phoneInputInvalid" class="invalid-feedback">
                         Это поле не должно быть пустым
                     </div>
+                    <div id="phoneInputLongInvalid" class="invalid-feedback">
+                        Проверьте номер телефона
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="plusOneSelect" class="plusOneSelect">
@@ -144,6 +147,10 @@
                 </div>
             </fieldset>
             <button onclick="send()" type="button" class="btn btn-primary" >Отправить</button>
+            <div id="successSend" class="valid-feedback">
+                Ура! Вы сообщили нам, что вы придёте и отправили нам следующие данные: вас зовут Сапковский, ваш номер телефона 88005553535, вы приедете один, вы останетесь на ночь, с вами не будет детей, вы с удовольствием выпьете на нашем мероприятии.
+                Большое спасибо, мы вам очень рады!
+            </div>
         </form>
         <div class="mar-bot-1">
             <p class="text-justify">
@@ -213,6 +220,9 @@
         } else if (data.contactPhone === null || data.contactPhone === "") {
             $("#phoneInput").css("border-color", "#dc3545");
             $("#phoneInputInvalid").show();
+        } else if ($("#phoneInput").val().length > 12 || $("#phoneInput").val().length < 7) {
+            $("#phoneInput").css("border-color", "#dc3545");
+            $("#phoneInputLongInvalid").show();
         } else {
             console.log(data);
             $.ajax({
@@ -229,6 +239,7 @@
                         $("#isOvernightSelect").val("false");
                         $("#withChildrenSelect").val("false");
                         $("#commentTextarea").val("");
+                        $("#successSend").show();
                     }
                 }
             });
@@ -243,6 +254,7 @@
     $("#phoneInput").focus(function () {
         $("#phoneInput").css("border-color", "#ced4da");
         $("#phoneInputInvalid").hide();
+        $("#phoneInputLongInvalid").hide();
     });
 </script>
 </body>
